@@ -11,7 +11,7 @@ async def ensure_database_exists():
     config = get_db_config()
     db_name = config["db_name"]
     url_obj = config["url"]
-    url_without_db = url_obj.set(database=db_name)
+    url_without_db = url_obj.set(database="postgres")
     admin_engine = create_async_engine(url_without_db, echo=False)
     try:
         async with admin_engine.begin() as conn:

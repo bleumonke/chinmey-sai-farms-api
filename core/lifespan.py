@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from dotenv import load_dotenv
 from db import (
-    setup_database,  # <- replaces create_engine_with_retries + init_db
+    setup_database,
     init_session_factory
 )
 import logging.config
