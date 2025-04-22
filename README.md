@@ -44,7 +44,9 @@ chimney_farms/
 ## Command to Run
 
 ```bash
-uvicorn main:app --reload --host 0.0.0.0 --port 8080
+ENV=local uvicorn main:app --reload --host 0.0.0.0 --port 8080
+ENV=dev uvicorn main:app --reload --host 0.0.0.0 --port 8080
+ENV=prod uvicorn main:app --reload --host 0.0.0.0 --port 8080
 ```
 
 # KILL Ports
