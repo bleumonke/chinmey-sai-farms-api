@@ -14,7 +14,7 @@ for route in __routes__:
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins= ["https://main.d2ut8kjo40hhn.amplifyapp.com","http://localhost:3000"],
+    allow_origins=["*"],  # You can replace "*" with your frontend domain in production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
