@@ -9,9 +9,6 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-for route in __routes__:
-    app.include_router(route)
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["https://main.d2ut8kjo40hhn.amplifyapp.com", "http://localhost:3000"],
@@ -20,10 +17,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+for route in __routes__:
+    app.include_router(route)
+
 @app.get("/", tags=["Root"])
 def read_root():
     return {"message": "Chimney Farms API is running 🚜"}
-
 
 @app.get("/health", tags=["health"])
 def health():
