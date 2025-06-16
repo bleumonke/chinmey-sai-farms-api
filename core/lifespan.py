@@ -23,11 +23,11 @@ async def lifespan(app: FastAPI):
         logging.config.dictConfig(config)
 
     logger.info(f"🔒 App startup using env:{env}, file: {file_path}")
-
-    # 💡 Setup database (creates DB, connects, initializes tables)
-    engine = await setup_database()
-    init_session_factory(engine)
-
+    try:
+        engine = await setup_database()
+        init_session_factory(engine)
+    except Exception as e:
+        logger.warning(f"failed to initilize database , error: {e}")
     yield
 
     logger.info("🔒 App shutdown.")
