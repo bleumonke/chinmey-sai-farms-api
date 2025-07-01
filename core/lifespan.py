@@ -17,11 +17,10 @@ async def lifespan(app: FastAPI):
     file_path = f"./env/.env.{env}"
     load_dotenv(dotenv_path=file_path)
 
-    # Load logging config
     with open("logger.yaml", "r") as f:
         config = yaml.safe_load(f)
         logging.config.dictConfig(config)
-
+    logger.info(f"Database URL : {os.getenv("DATABASE_URL")}")
     logger.info(f"🔒 App startup using env:{env}, file: {file_path}")
     try:
         engine = await setup_database()

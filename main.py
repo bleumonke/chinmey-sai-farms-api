@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from core import lifespan, __routes__
+import os
 
 app = FastAPI(
     title="Chimney Farms API",
@@ -11,7 +12,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://main.d25h8frf7gfmlm.amplifyapp.com", "http://localhost:3000"],
+    allow_origins=[os.environ.get('CORS_ALLOWED_ORIGIN')],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
