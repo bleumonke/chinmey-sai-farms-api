@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from core import lifespan, __routes__
-import os
 
 app = FastAPI(
     title="Chimney Farms API",
@@ -24,7 +23,3 @@ for route in __routes__:
 @app.get("/", tags=["Root"])
 def read_root():
     return {"message": "Chimney Farms API is running 🚜"}
-
-@app.get("/health", tags=["health"])
-def health():
-    return {"status": "healthy"}
